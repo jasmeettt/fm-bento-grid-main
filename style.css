@@ -1,0 +1,133 @@
+@font-face {
+  font-family: "DM Sans";
+  font-weight: 400 500;
+  font-style: italic;
+  src: url(assets/fonts/DMSans-Italic-VariableFont_opsz\wght.ttf);
+}
+@font-face {
+  font-family: "DM Sans";
+  font-weight: 400 500;
+  src: url(assets/fonts/DMSans-VariableFont_opsz\wght.ttf);
+}
+
+:root {
+  --primary-sub: hsl(254, 88%, 90%);
+  --primary-base: hsl(256, 67%, 59%);
+  --accent-sub: hsl(31, 66%, 93%);
+  --accent-base: hsl(39, 100%, 71%);
+  --white: hsl(0, 0%, 100%);
+  --off-white: hsl(0, 0%, 96%);
+  --black: hsl(0, 0%, 7%);
+
+  --fs-reg: 1.125rem;
+
+  --fs-md: 2.25rem;
+  --fs-lg: 3rem;
+  --fs-xl: 4rem;
+}
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 500;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol {
+    margin: 0;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}
+
+@layer base {
+  html {
+    font-family: "DM Sans", sans-serif;
+    line-height: 1.5;
+  }
+  body {
+    margin: 32px;
+    color: var(--black);
+    font-size: var(--fs-reg);
+    background: var(--off-white);
+
+    h1,
+    h2 {
+      color: var(--heading-color, inherit);
+      font-size: var(--heading-font-size, var(--fs-md));
+      line-height: 1.1;
+      text-wrap: balance;
+
+      span {
+        color: var(--heading-span-color, var(--accent-base));
+      }
+    }
+  }
+
+  .attribution {
+    font-size: 11px;
+    text-align: center;
+  }
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }
+}
+
+@layer layout {
+  .bento-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .bento-grid > * {
+    background-color: var(--bento-grid-background, var(--white));
+    padding: var(--bento-grid-padding, 32px);
+    color: var(--bento-grid-color, var(--black));
+    border-radius: var(--bento-grid-border-radius, 21px);
+
+    display: grid;
+    gap: var(--bento-card-gap, 32px);
+    align-content: var(--bento-card-vertical-alignment, start);
+    justify-items: var(--bento-card-horizontal-alignment, start);
+    text-align: var(--bento-card-horizontal-alignment, start);
+  }
+
+  .bento-grid > img {
+    max-width: var(--bento-card-image-width, 100%);
+    width: var(--bento-card-image-width, 100%);
+    order: var(--bento-card-image-order);
+  }
+
+  .bento-grid > :nth-child(1) {
+    --heading-font-size: var(--fs-xl);
+    --bento-grid-background: var(--primary-base);
+    --bento-grid-color: var(--white);
+    --heading-span: var(--accent-base);
+    /* --bento-grid-padding: 48px; */
+    --bento-card-horizontal-alignment: center;
+  }
+}
